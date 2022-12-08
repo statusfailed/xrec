@@ -1,4 +1,6 @@
-# A collection of kludges for recording screen/windows on X11
+# 🔴XREC
+
+(A collection of kludges for recording screen/windows on X11)
 
 - `xrec.py`: launch a command, wait for it to spawn a new window, then try to
   record it with ffmpeg
