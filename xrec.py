@@ -66,6 +66,6 @@ if __name__ == "__main__":
 
     print('window_ids', window_ids)
     window_id = list(window_ids)[0].decode("utf-8")
-    record_cmd = ["ffmpeg", "-y", "-f", "x11grab", "-window_id", window_id, "-framerate", "60", "-i", ":0.0", "out.mpg"]
+    record_cmd = ["ffmpeg", "-y", "-f", "x11grab", "-window_id", window_id, "-framerate", "60", "-i", ":0.0", "out.webp"]
     subprocess.run(record_cmd)
     process.wait()
