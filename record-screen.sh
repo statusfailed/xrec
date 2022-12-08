@@ -5,10 +5,8 @@
 
 # see man ffmpeg section "X11 grabbing"
 #   -f x11grab          record screen
-#   -r 30               30 FPS recording
 #   -i :0.0             select input? (X11 session)
-#   -acodec libvorbis   make a .webm
-#   -video_size         well duh
+#   -video_size         hardcoded screen size (sorry)
 ffmpeg \
   -f x11grab  \
   -video_size 3840x2160 \
