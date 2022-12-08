@@ -5,6 +5,7 @@ import sys
 import time
 
 def get_x11_window_ids():
+    """ Get a list of X11 window IDs """
     xprop_output = subprocess.run(["xprop", "-root"], capture_output=True)
     lines = xprop_output.stdout.splitlines()
 
@@ -30,10 +31,6 @@ def watch_for_window(cmd, delay=0.5):
     Note that there's a delay kludge of 0.5s: it seems like sometimes multiple windows get opened
     """
     window_ids_before = set(get_x11_window_ids())
-    # print('window_ids_before', window_ids_before)
-
-    # run command
-    # subprocess.run(cmd)
 
     new_windows = set()
     process = subprocess.Popen(cmd)
@@ -47,7 +44,6 @@ def watch_for_window(cmd, delay=0.5):
     while not new_windows:
         window_ids_after = set(get_x11_window_ids())
         new_windows = window_ids_after - window_ids_before
-        # print('window_ids_after', window_ids_after)
 
         if process.poll() is not None:
             # process died early, return nothing.
@@ -58,7 +54,6 @@ def watch_for_window(cmd, delay=0.5):
 
 if __name__ == "__main__":
     cmd = sys.argv[1:]
-    # print('I am going to run this command: ', cmd)
 
     process, window_ids = watch_for_window(cmd)
     for w in window_ids:
